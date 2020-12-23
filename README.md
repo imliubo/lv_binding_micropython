@@ -169,6 +169,7 @@ Here is a procedure for adding lvgl to an existing Micropython project. (The exa
 - Register lvgl module and display/input drivers in Micropython as a builtin module. [An example](https://github.com/littlevgl/lv_micropython/blob/2940838bf6d4999050efecb29a4152ab5796d5b3/ports/unix/mpconfigport.h#L230).
 - Add lvgl roots to gc roots. [An example](https://github.com/littlevgl/lv_micropython/blob/2940838bf6d4999050efecb29a4152ab5796d5b3/ports/unix/mpconfigport.h#L317-L318). 
 - ~Configure lvgl to use *Garbage Collection* by setting several `LV_MEM_CUSTOM_*` and `LV_GC_*` macros [example](https://github.com/littlevgl/lv_mpy/blob/bc635700e4186f39763e5edee73660fbe1a27cd4/lib/lv_conf.h#L28)~ lv_conf.h was moved to lv_binding_micropython git module.
+- Make sure you configure partitions correctly in `partitions.csv` and leave enough room for the LVGL module.
 - Something I forgot? Please let me know.
 
 ### gen_mpy.py syntax
@@ -238,7 +239,7 @@ disp_drv.hor_res = 480
 disp_drv.ver_res = 320
 disp_drv.register()
 
-# Regsiter SDL mouse driver
+# Register SDL mouse driver
 
 indev_drv = lv.indev_drv_t()
 indev_drv.init() 
@@ -256,7 +257,7 @@ import lvesp32
 
 # Import ILI9341 driver and initialized it
 
-from ili9341 import ili9341
+from ili9XXX import ili9341
 disp = ili9341()
 
 # Import XPT2046 driver and initalize it
